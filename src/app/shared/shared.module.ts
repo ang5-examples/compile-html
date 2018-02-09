@@ -1,16 +1,19 @@
 import {NgModule} from '@angular/core';
-import {DynamicComponentComponent} from './dynamic-component/dynamic-component.component';
 import {CommonModule} from '@angular/common';
+import {PhraseTextEditorComponent} from './phrase-text-editor/phrase-text-editor.component';
+import {CompiledHtmlComponent} from './phrase-text-editor/compiled-html.component';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
   ],
   declarations: [
-    DynamicComponentComponent
+    CompiledHtmlComponent,
+
+    PhraseTextEditorComponent
   ],
   exports: [
-    DynamicComponentComponent
+    PhraseTextEditorComponent
   ]
 })
 export class SharedModule { }

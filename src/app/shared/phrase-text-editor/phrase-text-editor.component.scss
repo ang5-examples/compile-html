@@ -1,0 +1,39 @@
+.phrase {
+  padding: 2px 10px;
+  margin: 0 5px;
+  color: #3e3e3e!important;
+  font-style: unset!important;
+  border-radius: 3px;
+  font-size: 16px;
+  white-space: nowrap;
+  position: relative;
+  display: inline-block;
+}
+
+.phrase-invalid {
+  background: #fee8de;
+}
+
+.phrase-valid {
+  background: #dcedf4;
+}
+
+.phrase:after {
+  content: "";
+  color: #646464;
+  right: -5px;
+  position: relative;
+  line-height: 21px;
+}
+
+.phrase-click {
+  cursor: pointer;
+}
+
+.phrase-click:after {
+  content: "\F3EB";
+}
+
+.phrase-edit:after {
+  content: "\F5F5";
+}

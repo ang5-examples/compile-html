@@ -1,10 +1,14 @@
-import {Compiler, Component, Directive, Input, NgModule, OnChanges, SimpleChanges, ViewChild, ViewContainerRef} from '@angular/core';
+import {
+  Compiler, Component, Input, NgModule, OnChanges, SimpleChanges,
+  ViewContainerRef
+} from '@angular/core';
+import {PhraseModifiers} from './phrase-modifiers/phrase-modifiers.module';
 
 @Component({
-  selector: 'app-dynamic-component',
+  selector: 'app-compiled-html',
   template: ''
 })
-export class DynamicComponentComponent implements OnChanges {
+export class CompiledHtmlComponent implements OnChanges {
   @Input() template = '';
   @Input() componentClass: object = {};
 
@@ -20,7 +24,7 @@ export class DynamicComponentComponent implements OnChanges {
     @Component({template})
     class TemplateComponent {}
 
-    @NgModule({declarations: [TemplateComponent]})
+    @NgModule({declarations: [TemplateComponent], imports: [PhraseModifiers]})
     class TemplateModule {}
 
     const module = this.compiler.compileModuleAndAllComponentsSync(TemplateModule);
