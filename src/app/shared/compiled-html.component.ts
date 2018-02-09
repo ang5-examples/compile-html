@@ -2,7 +2,6 @@ import {
   Compiler, Component, Input, NgModule, OnChanges, SimpleChanges,
   ViewContainerRef
 } from '@angular/core';
-import {PhraseModifiers} from './phrase-modifiers/phrase-modifiers.module';
 
 @Component({
   selector: 'app-compiled-html',
@@ -11,6 +10,7 @@ import {PhraseModifiers} from './phrase-modifiers/phrase-modifiers.module';
 export class CompiledHtmlComponent implements OnChanges {
   @Input() template = '';
   @Input() componentClass: object = {};
+  @Input() imports = [];
 
   constructor(private compiler: Compiler, private container: ViewContainerRef) {}
 
@@ -21,11 +21,11 @@ export class CompiledHtmlComponent implements OnChanges {
   private addComponent(template: string, properties: any = {}) {
     this.container.clear();
 
-    @Component({template})
     class TemplateComponent {}
+    Component({template})(TemplateComponent);
 
-    @NgModule({declarations: [TemplateComponent], imports: [PhraseModifiers]})
     class TemplateModule {}
+    NgModule({declarations: [TemplateComponent], imports: this.imports})(TemplateModule);
 
     const module = this.compiler.compileModuleAndAllComponentsSync(TemplateModule);
     const factory = module.componentFactories.find((comp) =>

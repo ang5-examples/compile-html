@@ -20,4 +20,4 @@ import {PhraseClickDirective} from './phrase-click.directive';
   ]
 })
 
-export class PhraseModifiers {}
+export class PhraseModifiersModule {}
