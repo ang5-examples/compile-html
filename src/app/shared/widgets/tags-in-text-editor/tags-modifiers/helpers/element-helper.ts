@@ -1,4 +1,5 @@
 import {ElementRef, Renderer2} from '@angular/core';
+import {DataTag} from '../../models';
 
 export class ElementHelper {
   constructor(private elementRef: ElementRef, private renderer: Renderer2) {}
@@ -16,5 +17,22 @@ export class ElementHelper {
     classes.forEach(item => {
       this.renderer.addClass(this.elementRef.nativeElement, item);
     });
+  }
+
+  // specific
+  getDataTag(): DataTag {
+    let data = {
+      title: 'invalid'
+    };
+    try { // one tag must not break the whole process
+      const rowData = this.elementRef.nativeElement.getAttribute('data-tag');
+      data = eval('(' + rowData + ')'); // simplify json in data-tag="{}", JSON.parse cannot parse relaxed json
+    } catch {
+      throw Error('Invalid data-tag. Cannot Parse.');
+    }
+
+    return {
+      title: data['title']
+    };
   }
 }

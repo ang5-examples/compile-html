@@ -7,3 +7,9 @@ export interface TagData {
 export interface TagModifierHandler {
   onTagClick();
 }
+
+export interface DataTag {
+  // name: string;
+  title: string;
+  // value: string;
+}
