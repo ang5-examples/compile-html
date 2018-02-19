@@ -1,8 +1,8 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
-import {PhraseEditDirective} from './phrase-edit.directive';
-import {PhraseClickDirective} from './phrase-click.directive';
+import {PhraseEditDirective} from './tag-edit.directive';
+import {PhraseClickDirective} from './tag-click.directive';
 
 
 @NgModule({
@@ -20,4 +20,4 @@ import {PhraseClickDirective} from './phrase-click.directive';
   ]
 })
 
-export class PhraseModifiersModule {}
+export class TagsModifiersModule {}

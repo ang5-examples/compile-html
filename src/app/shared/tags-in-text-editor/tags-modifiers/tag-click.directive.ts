@@ -1,11 +1,11 @@
 import {Directive, ElementRef, HostListener, Input, OnInit, Renderer2} from '@angular/core';
-import {PhraseModifierHandler} from '../models';
+import {TagModifierHandler} from '../models';
 
 @Directive({
   selector: '[appPhraseClick]'
 })
 export class PhraseClickDirective implements OnInit {
-  @Input('appPhraseClick') phraseModifierHandler: PhraseModifierHandler | undefined;
+  @Input('appPhraseClick') phraseModifierHandler: TagModifierHandler | undefined;
   constructor(private elementRef: ElementRef, private renderer: Renderer2) {}
 
   ngOnInit() {
@@ -19,7 +19,7 @@ export class PhraseClickDirective implements OnInit {
 
   @HostListener('click', [])
   onClick() {
-    const test = this.phraseModifierHandler.onPhraseClick();
+    const test = this.phraseModifierHandler.onTagClick();
     alert(test);
   }
 }

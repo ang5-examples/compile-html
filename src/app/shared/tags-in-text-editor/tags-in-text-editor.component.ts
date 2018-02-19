@@ -1,20 +1,20 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {PhraseModifierHandler} from './models';
-import {PhraseModifiersModule} from './phrase-modifiers/phrase-modifiers.module';
+import {TagModifierHandler} from './models';
+import {TagsModifiersModule} from './tags-modifiers/tags-modifiers.module';
 
 @Component({
-  selector: 'app-phrase-text-editor',
+  selector: 'app-tags-in-text-editor',
   template: `
     <app-compiled-html [template]="htmlText" [componentClass]="componentClass" [imports]="imports">
     </app-compiled-html>
   `,
-  styleUrls: ['./phrase-text-editor.component.scss'],
+  styleUrls: ['./tags-in-text-editor.component.scss'],
   encapsulation: ViewEncapsulation.Native
 })
-export class PhraseTextEditorComponent implements OnInit, PhraseModifierHandler {
+export class TagsInTextEditorComponent implements OnInit, TagModifierHandler {
   htmlText: string;
   componentClass: object;
-  imports = [PhraseModifiersModule];
+  imports = [TagsModifiersModule];
 
   constructor() {}
 
@@ -31,11 +31,11 @@ export class PhraseTextEditorComponent implements OnInit, PhraseModifierHandler 
     `;
 
     this.componentClass = {
-      handler: this as PhraseModifierHandler
+      handler: this as TagModifierHandler
     };
   }
 
-  onPhraseClick() {
+  onTagClick() {
     alert('click');
     return 'return 123';
   }

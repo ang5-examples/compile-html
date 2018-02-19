@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {PhraseTextEditorComponent} from './phrase-text-editor/phrase-text-editor.component';
+import {TagsInTextEditorComponent} from './tags-in-text-editor/tags-in-text-editor.component';
 import {CompiledHtmlComponent} from './compiled-html.component';
 
 @NgModule({
@@ -10,10 +10,10 @@ import {CompiledHtmlComponent} from './compiled-html.component';
   declarations: [
     CompiledHtmlComponent,
 
-    PhraseTextEditorComponent
+    TagsInTextEditorComponent
   ],
   exports: [
-    PhraseTextEditorComponent
+    TagsInTextEditorComponent
   ]
 })
 export class SharedModule { }
