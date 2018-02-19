@@ -1,19 +1,16 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {TagsInTextEditorComponent} from './tags-in-text-editor/tags-in-text-editor.component';
-import {CompiledHtmlComponent} from './compiled-html.component';
+import {TagsInTextEditorModule} from './widgets/tags-in-text-editor/tags-in-text-editor.module';
 
 @NgModule({
   imports: [
     CommonModule,
+    TagsInTextEditorModule
   ],
   declarations: [
-    CompiledHtmlComponent,
-
-    TagsInTextEditorComponent
   ],
   exports: [
-    TagsInTextEditorComponent
+    TagsInTextEditorModule
   ]
 })
 export class SharedModule { }

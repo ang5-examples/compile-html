@@ -3,6 +3,10 @@ import {
   ViewContainerRef
 } from '@angular/core';
 
+// using
+// <app-compiled-html [template]="htmlText" [componentClass]="componentClass" [imports]="imports">
+//  </app-compiled-html>
+
 @Component({
   selector: 'app-compiled-html',
   template: ''
