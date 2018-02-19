@@ -22,11 +22,11 @@ export class TagsInTextEditorComponent implements OnInit, TagModifierHandler {
     this.htmlText = `
       <p>test test test
       test test
-      test <span [appPhraseEdit] data-phrase="{name: 'name', title: 'title', value: 'value'}"></span> test
+      test <span [appTagEdit] data-tag="{name: 'name', title: 'title', value: 'value'}"></span> test
       test test test</p>
       <p>test
        test test test test
-       test <span [appPhraseClick]="handler" data-phrase="{name: 'name', title: 'title', value: 'value'}"></span> test
+       test <span [appTagClick]="handler" data-tag="{name: 'name', title: 'title', value: 'value'}"></span> test
        test test test</p>
     `;
 

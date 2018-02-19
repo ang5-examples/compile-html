@@ -1,10 +1,10 @@
 import {Directive, ElementRef, Input, OnInit, Renderer2} from '@angular/core';
 
 @Directive({
-  selector: '[appPhraseEdit]',
+  selector: '[appTagEdit]',
 })
 export class PhraseEditDirective implements OnInit {
-  @Input('appPhraseEdit') appPhraseEdit: any | undefined;
+  @Input('appTagEdit') appTagEdit: any | undefined;
 
   constructor(private elementRef: ElementRef, private renderer: Renderer2) {
   }

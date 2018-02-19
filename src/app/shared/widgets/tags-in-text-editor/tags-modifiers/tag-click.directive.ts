@@ -2,10 +2,10 @@ import {Directive, ElementRef, HostListener, Input, OnInit, Renderer2} from '@an
 import {TagModifierHandler} from '../models';
 
 @Directive({
-  selector: '[appPhraseClick]'
+  selector: '[appTagClick]'
 })
 export class PhraseClickDirective implements OnInit {
-  @Input('appPhraseClick') phraseModifierHandler: TagModifierHandler | undefined;
+  @Input('appTagClick') tagModifierHandler: TagModifierHandler | undefined;
   constructor(private elementRef: ElementRef, private renderer: Renderer2) {}
 
   ngOnInit() {
@@ -19,7 +19,7 @@ export class PhraseClickDirective implements OnInit {
 
   @HostListener('click', [])
   onClick() {
-    const test = this.phraseModifierHandler.onTagClick();
+    const test = this.tagModifierHandler.onTagClick();
     alert(test);
   }
 }
