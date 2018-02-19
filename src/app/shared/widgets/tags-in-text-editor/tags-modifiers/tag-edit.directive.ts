@@ -1,4 +1,4 @@
-import {Directive, ElementRef, Input, OnInit, Renderer2} from '@angular/core';
+import {Directive, ElementRef, HostListener, Input, OnInit, Renderer2} from '@angular/core';
 import {ElementHelper} from './helpers/element-helper';
 import {DataTag} from '../models';
 
@@ -23,5 +23,14 @@ export class PhraseEditDirective implements OnInit {
   private InitText() {
     const dataTag = this.elementHelper.getDataTag();
     this.elementHelper.appendText(dataTag.title);
+  }
+
+  @HostListener('keydown', ['$event'])
+  onEdit(event: KeyboardEvent) {
+    const text = this.elementHelper.getText();
+    const dataTag = this.elementHelper.getDataTag();
+    dataTag.title = text;
+    this.elementHelper.setDataTag(dataTag);
+    console.log('dataTag: ' + text);
   }
 }

@@ -19,6 +19,10 @@ export class ElementHelper {
     });
   }
 
+  getText() {
+    return this.elementRef.nativeElement.innerHTML;
+  }
+
   // specific
   getDataTag(): DataTag {
     let data = {
@@ -26,7 +30,7 @@ export class ElementHelper {
     };
     try { // one tag must not break the whole process
       const rowData = this.elementRef.nativeElement.getAttribute('data-tag');
-      data = eval('(' + rowData + ')'); // simplify json in data-tag="{}", JSON.parse cannot parse relaxed json
+      data = eval('(' + rowData + ')'); // to simplify json in data-tag="{}", JSON.parse cannot parse relaxed json
     } catch {
       throw Error('Invalid data-tag. Cannot Parse.');
     }
@@ -34,5 +38,9 @@ export class ElementHelper {
     return {
       title: data['title']
     };
+  }
+
+  setDataTag(dataTag: DataTag) {
+    this.setAttribute('data-tag', JSON.stringify(dataTag));
   }
 }
