@@ -1,20 +1,22 @@
 import {Directive, ElementRef, HostListener, Input, OnInit, Renderer2} from '@angular/core';
 import {TagModifierHandler} from '../models';
+import {ElementHelper} from './helpers/element-helper';
 
 @Directive({
   selector: '[appTagClick]'
 })
 export class PhraseClickDirective implements OnInit {
   @Input('appTagClick') tagModifierHandler: TagModifierHandler | undefined;
-  constructor(private elementRef: ElementRef, private renderer: Renderer2) {}
+  private elementHelper: ElementHelper;
+
+  constructor(private elementRef: ElementRef, private renderer: Renderer2) {
+    this.elementHelper = new ElementHelper(this.elementRef, this.renderer);
+  }
 
   ngOnInit() {
-    const text = this.renderer.createText('this.data.title');
-    this.renderer.appendChild(this.elementRef.nativeElement, text);
+    this.elementHelper.appendText('this.data.title');
 
-    this.renderer.addClass(this.elementRef.nativeElement, 'phrase');
-    this.renderer.addClass(this.elementRef.nativeElement, 'phrase-valid');
-    this.renderer.addClass(this.elementRef.nativeElement, 'phrase-click');
+    this.elementHelper.addClass(['phrase', 'phrase-valid', 'phrase-click']);
   }
 
   @HostListener('click', [])

@@ -1,9 +1,5 @@
 import {Directive, ElementRef, Input, OnInit, Renderer2} from '@angular/core';
-
-class ElementHelper {
-  constructor(private elementRef: ElementRef, private renderer: Renderer2) {
-  }
-}
+import {ElementHelper} from './helpers/element-helper';
 
 @Directive({
   selector: '[appTagEdit]',
@@ -17,17 +13,14 @@ export class PhraseEditDirective implements OnInit {
   }
 
   ngOnInit() {
-    const text = this.renderer.createText('this.data.title');
-    this.renderer.appendChild(this.elementRef.nativeElement, text);
-    this.renderer.setAttribute(this.elementRef.nativeElement, 'contenteditable', 'true');
+    this.elementHelper.appendText('this.data.title');
+    this.elementHelper.setAttribute('contenteditable', 'true');
 
-    this.renderer.addClass(this.elementRef.nativeElement, 'phrase');
-    this.renderer.addClass(this.elementRef.nativeElement, 'phrase-invalid');
-    this.renderer.addClass(this.elementRef.nativeElement, 'phrase-edit');
+    this.elementHelper.addClass(['phrase', 'phrase-invalid', 'phrase-edit']);
   }
 
   getDataTag() {
-    this.elementRef.nativeElement
+    // this.elementRef.nativeElement
     // todo:
   }
 }
