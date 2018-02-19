@@ -39,4 +39,8 @@ export class TagsInTextEditorComponent implements OnInit, TagModifierHandler {
     alert('click');
     return 'return 123';
   }
+
+  public getText() {
+    return this.htmlText;
+  }
 }
