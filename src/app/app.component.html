@@ -1,5 +1,13 @@
 <h1>Dynamic template:</h1>
 
+<div>
+  <textarea [rows]="5" cols="100" [(ngModel)]="sourceHtmlText"></textarea>
+</div>
+
+<div style="margin-top: 30px; margin-bottom: 30px;">
+  <button (click)="setText()">Set Text</button>
+</div>
+
 <div style="border: 1px solid red;">
   <app-tags-in-text-editor>
   </app-tags-in-text-editor>
@@ -10,5 +18,5 @@
 </div>
 
 <div>
-  <textarea [rows]="5" cols="100" [(ngModel)]="resultedText"></textarea>
+  <textarea [rows]="5" cols="100" [(ngModel)]="resultHtmlText"></textarea>
 </div>

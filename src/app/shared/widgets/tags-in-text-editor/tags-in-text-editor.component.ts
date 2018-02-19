@@ -19,17 +19,7 @@ export class TagsInTextEditorComponent implements OnInit, TagModifierHandler {
   constructor() {}
 
   ngOnInit() {
-    this.htmlText = `
-      <p>test test test
-      test test
-      test <span [appTagEdit] data-tag="{name: 'name', title: 'title', value: 'value'}"></span> test
-      test test test</p>
-      <p>test
-       test test test test
-       test <span [appTagClick]="handler" data-tag="{name: 'name', title: 'title', value: 'value'}"></span> test
-       test test test</p>
-    `;
-
+    this.htmlText = '';
     this.componentClass = {
       handler: this as TagModifierHandler
     };
@@ -38,6 +28,11 @@ export class TagsInTextEditorComponent implements OnInit, TagModifierHandler {
   onTagClick() {
     alert('click');
     return 'return 123';
+  }
+
+  // outer functions, may be remade with store
+  public setHtmlText(htmlText) {
+    this.htmlText = htmlText;
   }
 
   public getText() {

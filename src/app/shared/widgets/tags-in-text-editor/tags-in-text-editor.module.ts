@@ -2,7 +2,6 @@ import {TagsInTextEditorComponent} from './tags-in-text-editor.component';
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {CompiledHtmlComponent} from './compiled-html/compiled-html.component';
-import {TagsInTextEditorStore} from './tags-in-text-editor.store';
 
 @NgModule({
   imports: [
@@ -12,9 +11,6 @@ import {TagsInTextEditorStore} from './tags-in-text-editor.store';
   declarations: [
     TagsInTextEditorComponent,
     CompiledHtmlComponent
-  ],
-  providers: [
-    TagsInTextEditorStore
   ],
   exports: [
     TagsInTextEditorComponent

@@ -19,7 +19,15 @@ export class CompiledHtmlComponent implements OnChanges {
   constructor(private compiler: Compiler, private container: ViewContainerRef) {}
 
   ngOnChanges(changes: SimpleChanges) {
-    this.addComponent(changes.template.currentValue, changes.componentClass.currentValue);
+    let currentTemplate = this.template;
+    if (changes.template) {
+      currentTemplate = changes.template.currentValue;
+    }
+    let currentComponentClass = this.componentClass;
+    if (changes.componentClass) {
+      currentComponentClass = changes.componentClass.currentValue;
+    }
+    this.addComponent(currentTemplate, currentComponentClass);
   }
 
   private addComponent(template: string, properties: any = {}) {

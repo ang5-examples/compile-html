@@ -9,13 +9,30 @@ import {TagsInTextEditorComponent} from './shared/widgets/tags-in-text-editor/ta
 export class AppComponent implements OnInit {
 
   @ViewChild(TagsInTextEditorComponent) tagsInTextEditor: TagsInTextEditorComponent;
-  resultedText: string;
+  sourceHtmlText: string;
+  resultHtmlText: string;
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.sourceHtmlText = `
+      <p>test test test
+      test test
+      test <span [appTagEdit] data-tag="{name: 'name', title: 'title', value: 'value'}"></span> test
+      test test test</p>
+      <p>test
+       test test test test
+       test <span [appTagClick]="handler" data-tag="{name: 'name', title: 'title', value: 'value'}"></span> test
+       test test test</p>
+    `;
+
+  }
+
+  setText() {
+    this.tagsInTextEditor.setHtmlText(this.sourceHtmlText);
+  }
 
   getText() {
     alert('test');
 
-    this.resultedText = this.tagsInTextEditor.getText();
+    this.resultHtmlText = this.tagsInTextEditor.getText();
   }
 }
