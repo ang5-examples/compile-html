@@ -2,6 +2,7 @@ import {
   Compiler, Component, Input, NgModule, OnChanges, SimpleChanges,
   ViewContainerRef
 } from '@angular/core';
+import {ViewRef_} from '@angular/core/src/view';
 
 // using
 // <app-compiled-html [template]="htmlText" [componentClass]="componentClass" [imports]="imports">
@@ -48,5 +49,12 @@ export class CompiledHtmlComponent implements OnChanges {
     // If properties are changed at a later stage, the change detection
     // may need to be triggered manually:
     // component.changeDetectorRef.detectChanges();
+  }
+
+  // outer functions, may be remade with store
+  public getSourceHtml() {
+    const viewRef: ViewRef_ = this.container.get(0) as ViewRef_;
+    const ngComponent = viewRef.rootNodes[0];
+    return ngComponent.innerHTML;
   }
 }

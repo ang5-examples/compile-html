@@ -1,5 +1,6 @@
 import {ElementRef, Renderer2} from '@angular/core';
 import {DataTag} from '../../models';
+import {parse, transform} from 'relaxed-json';
 
 export class ElementHelper {
   constructor(private elementRef: ElementRef, private renderer: Renderer2) {}
@@ -25,12 +26,13 @@ export class ElementHelper {
 
   // specific
   getDataTag(): DataTag {
-    let data = {
+    let data: any = {
       title: 'invalid'
     };
     try { // one tag must not break the whole process
       const rowData = this.elementRef.nativeElement.getAttribute('data-tag');
-      data = eval('(' + rowData + ')'); // to simplify json in data-tag="{}", JSON.parse cannot parse relaxed json
+      const rowDataT = transform(rowData); // because single quotes JSON.parse cannot process
+      data = JSON.parse(rowDataT);
     } catch {
       throw Error('Invalid data-tag. Cannot Parse.');
     }
@@ -41,6 +43,7 @@ export class ElementHelper {
   }
 
   setDataTag(dataTag: DataTag) {
-    this.setAttribute('data-tag', JSON.stringify(dataTag));
+    const str = JSON.stringify(dataTag).replace(/"/g, '\''); // we need no double quotes
+    this.setAttribute('data-tag', str);
   }
 }

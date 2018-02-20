@@ -1,6 +1,7 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
 import {TagModifierHandler} from './models';
 import {TagsModifiersModule} from './tags-modifiers/tags-modifiers.module';
+import {CompiledHtmlComponent} from './compiled-html/compiled-html.component';
 
 @Component({
   selector: 'app-tags-in-text-editor',
@@ -15,6 +16,7 @@ export class TagsInTextEditorComponent implements OnInit, TagModifierHandler {
   htmlText: string;
   componentClass: object;
   imports = [TagsModifiersModule];
+  @ViewChild(CompiledHtmlComponent) compiledHtmlComponent: CompiledHtmlComponent;
 
   constructor() {}
 
@@ -36,6 +38,6 @@ export class TagsInTextEditorComponent implements OnInit, TagModifierHandler {
   }
 
   public getText() {
-    return this.htmlText;
+    return this.compiledHtmlComponent.getSourceHtml();
   }
 }

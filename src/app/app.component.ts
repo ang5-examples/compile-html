@@ -16,11 +16,11 @@ export class AppComponent implements OnInit {
     this.sourceHtmlText = `
       <p>test test test
       test test
-      test <span [appTagEdit] data-tag="{name: 'name', title: 'title', value: 'value'}"></span> test
+      test <span [appTagEdit] data-tag="{'name': 'name1', 'title': 'title1', 'value': 'value1'}"></span> test
       test test test</p>
       <p>test
        test test test test
-       test <span [appTagClick]="handler" data-tag="{name: 'name', title: 'title', value: 'value'}"></span> test
+       test <span [appTagClick]="handler" data-tag="{'name': 'name2', 'title': 'title2', 'value': 'value2'}"></span> test
        test test test</p>
     `;
 
@@ -31,8 +31,6 @@ export class AppComponent implements OnInit {
   }
 
   getText() {
-    alert('test');
-
     this.resultHtmlText = this.tagsInTextEditor.getText();
   }
 }
