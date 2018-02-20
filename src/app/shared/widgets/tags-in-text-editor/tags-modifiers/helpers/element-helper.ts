@@ -5,8 +5,9 @@ import {transform} from 'relaxed-json';
 export class ElementHelper {
   constructor(private elementRef: ElementRef, private renderer: Renderer2) {}
 
-  appendText(text: string) {
-    this.elementRef.nativeElement.innerHTML = text;
+  appendText() {
+    const dataTag = this.getDataTag();
+    this.elementRef.nativeElement.innerHTML = dataTag.title;
   }
 
   setAttribute(name: string, value: string) {
@@ -23,7 +24,7 @@ export class ElementHelper {
     return this.elementRef.nativeElement.innerHTML;
   }
 
-  // specific
+  // specific methods
   getDataTag(): DataTag {
     let data: any = {
       name: '',
@@ -50,8 +51,9 @@ export class ElementHelper {
     this.setAttribute('data-tag', str);
   }
 
-  checkValidation(dataTag) {
-    const classValid = dataTag.value === 'null' ? 'phrase-invalid' : 'phrase-valid';
+  checkValidation() {
+    const dataTag = this.getDataTag();
+    const classValid = !dataTag.value ? 'phrase-invalid' : 'phrase-valid';
     this.addClass([classValid]);
   }
 

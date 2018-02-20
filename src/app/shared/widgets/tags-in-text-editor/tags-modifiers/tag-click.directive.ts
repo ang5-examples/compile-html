@@ -14,11 +14,9 @@ export class PhraseClickDirective implements OnInit {
   }
 
   ngOnInit() {
-    const dataTag = this.elementHelper.getDataTag();
-    this.elementHelper.appendText(dataTag.title);
-
+    this.elementHelper.appendText();
     this.elementHelper.addClass(['phrase', 'phrase-click']);
-    this.elementHelper.checkValidation(dataTag);
+    this.elementHelper.checkValidation();
   }
 
   @HostListener('click', [])
@@ -26,6 +24,7 @@ export class PhraseClickDirective implements OnInit {
     const dataTag = this.elementHelper.getDataTag();
     const newText = this.tagsModifierHandler.onTagClick(dataTag.name);
     this.elementHelper.setNewText(newText);
-    this.elementHelper.appendText(newText);
+    this.elementHelper.appendText();
+    this.elementHelper.checkValidation();
   }
 }

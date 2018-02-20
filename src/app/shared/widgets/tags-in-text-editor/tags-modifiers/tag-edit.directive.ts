@@ -14,12 +14,11 @@ export class PhraseEditDirective implements OnInit {
   }
 
   ngOnInit() {
-    const dataTag = this.elementHelper.getDataTag();
-    this.elementHelper.appendText(dataTag.title);
+    this.elementHelper.appendText();
     this.elementHelper.setAttribute('contenteditable', 'true');
 
     this.elementHelper.addClass(['phrase', 'phrase-edit']);
-    this.elementHelper.checkValidation(dataTag);
+    this.elementHelper.checkValidation();
   }
 
   @HostListener('keydown', ['$event'])

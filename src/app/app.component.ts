@@ -18,11 +18,11 @@ export class AppComponent implements OnInit, TagModifierHandler {
     this.sourceHtmlText = `
       <p>test test test
       test test
-      test <span [appTagEdit] data-tag="{'name': 'name1', 'title': 'title1', 'value': 'null'}"></span> test
+      test <span [appTagEdit] data-tag="{'name': 'name1', 'title': 'title1', 'value': ''}"></span> test
       test test test</p>
       <p>test
        test test test test
-       test <span [appTagClick]="handler" data-tag="{'name': 'name2', 'title': 'title2', 'value': 'null'}"></span> test
+       test <span [appTagClick]="handler" data-tag="{'name': 'name2', 'title': 'title2', 'value': ''}"></span> test
        test test test</p>
     `;
 
