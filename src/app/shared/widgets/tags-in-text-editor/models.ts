@@ -1,15 +1,9 @@
-export interface TagData {
-  name: string;
-  title: string;
-  value: string;
-}
-
 export interface TagModifierHandler {
-  onTagClick();
+  onTagClick(name: string);
 }
 
 export interface DataTag {
-  // name: string;
+  name: string;
   title: string;
-  // value: string;
+  value: string;
 }

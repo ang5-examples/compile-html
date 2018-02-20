@@ -14,23 +14,17 @@ export class PhraseEditDirective implements OnInit {
   }
 
   ngOnInit() {
-    this.InitText();
-    this.elementHelper.setAttribute('contenteditable', 'true');
-
-    this.elementHelper.addClass(['phrase', 'phrase-invalid', 'phrase-edit']);
-  }
-
-  private InitText() {
     const dataTag = this.elementHelper.getDataTag();
     this.elementHelper.appendText(dataTag.title);
+    this.elementHelper.setAttribute('contenteditable', 'true');
+
+    this.elementHelper.addClass(['phrase', 'phrase-edit']);
+    this.elementHelper.checkValidation(dataTag);
   }
 
   @HostListener('keydown', ['$event'])
   onEdit(event: KeyboardEvent) {
-    const text = this.elementHelper.getText();
-    const dataTag = this.elementHelper.getDataTag();
-    dataTag.title = text;
-    this.elementHelper.setDataTag(dataTag);
-    console.log('dataTag: ' + text);
+    const newText = this.elementHelper.getText();
+    this.elementHelper.setNewText(newText);
   }
 }

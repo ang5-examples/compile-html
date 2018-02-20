@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
+import {Component, Input, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
 import {TagModifierHandler} from './models';
 import {TagsModifiersModule} from './tags-modifiers/tags-modifiers.module';
 import {CompiledHtmlComponent} from './compiled-html/compiled-html.component';
@@ -13,6 +13,7 @@ import {CompiledHtmlComponent} from './compiled-html/compiled-html.component';
   encapsulation: ViewEncapsulation.Native
 })
 export class TagsInTextEditorComponent implements OnInit, TagModifierHandler {
+  @Input() tagsModifierHandler: TagModifierHandler;
   htmlText: string;
   componentClass: object;
   imports = [TagsModifiersModule];
@@ -27,9 +28,11 @@ export class TagsInTextEditorComponent implements OnInit, TagModifierHandler {
     };
   }
 
-  onTagClick() {
-    alert('click');
-    return 'return 123';
+  onTagClick(name: string) {
+    if (!this.tagsModifierHandler) {
+      throw new Error('No tagClickHandler for clickable tags provided!');
+    }
+    return this.tagsModifierHandler.onTagClick(name);
   }
 
   // outer functions, may be remade with store
