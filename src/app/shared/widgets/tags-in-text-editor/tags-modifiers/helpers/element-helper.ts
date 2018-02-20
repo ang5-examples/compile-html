@@ -20,6 +20,12 @@ export class ElementHelper {
     });
   }
 
+  removeClass(classes: string[]) {
+    classes.forEach(item => {
+      this.renderer.removeClass(this.elementRef.nativeElement, item);
+    });
+  }
+
   getText() {
     return this.elementRef.nativeElement.innerHTML;
   }
@@ -52,6 +58,7 @@ export class ElementHelper {
   }
 
   checkValidation() {
+    this.removeClass(['phrase-invalid', 'phrase-valid']);
     const dataTag = this.getDataTag();
     const classValid = !dataTag.value ? 'phrase-invalid' : 'phrase-valid';
     this.addClass([classValid]);
@@ -60,6 +67,12 @@ export class ElementHelper {
   setNewText(newText: string) {
     const dataTag = this.getDataTag();
     dataTag.title = newText;
+    this.setDataTag(dataTag);
+  }
+
+  setValue(newValue: string) {
+    const dataTag = this.getDataTag();
+    dataTag.value = newValue;
     this.setDataTag(dataTag);
   }
 }

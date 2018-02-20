@@ -20,9 +20,9 @@ export class AppComponent implements OnInit, TagModifierHandler {
       test test
       test <span [appTagEdit] data-tag="{'name': 'name1', 'title': 'title1', 'value': ''}"></span> test
       test test test</p>
-      <p>test
+      <p>test<span [appTagEdit] data-tag="{'name': 'name2', 'title': 'title1', 'value': 'rtuty'}"></span>
        test test test test
-       test <span [appTagClick]="handler" data-tag="{'name': 'name2', 'title': 'title2', 'value': ''}"></span> test
+       test <span [appTagClick]="handler" data-tag="{'name3': 'name2', 'title': 'title2', 'value': ''}"></span> test
        test test test</p>
     `;
 
@@ -38,6 +38,6 @@ export class AppComponent implements OnInit, TagModifierHandler {
   }
 
   onTagClick(name: string) {
-    return '346ccvvbncv';
+    return prompt();
   }
 }

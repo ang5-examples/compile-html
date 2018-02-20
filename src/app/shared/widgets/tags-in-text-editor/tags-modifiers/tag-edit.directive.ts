@@ -1,6 +1,5 @@
 import {Directive, ElementRef, HostListener, Input, OnInit, Renderer2} from '@angular/core';
 import {ElementHelper} from './helpers/element-helper';
-import {DataTag} from '../models';
 
 @Directive({
   selector: '[appTagEdit]',
@@ -16,7 +15,6 @@ export class PhraseEditDirective implements OnInit {
   ngOnInit() {
     this.elementHelper.appendText();
     this.elementHelper.setAttribute('contenteditable', 'true');
-
     this.elementHelper.addClass(['phrase', 'phrase-edit']);
     this.elementHelper.checkValidation();
   }
@@ -25,5 +23,7 @@ export class PhraseEditDirective implements OnInit {
   onEdit(event: KeyboardEvent) {
     const newText = this.elementHelper.getText();
     this.elementHelper.setNewText(newText);
+    this.elementHelper.setValue(newText);
+    this.elementHelper.checkValidation();
   }
 }

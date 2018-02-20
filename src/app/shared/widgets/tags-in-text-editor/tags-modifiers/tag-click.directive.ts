@@ -25,6 +25,7 @@ export class PhraseClickDirective implements OnInit {
     const newText = this.tagsModifierHandler.onTagClick(dataTag.name);
     this.elementHelper.setNewText(newText);
     this.elementHelper.appendText();
+    this.elementHelper.setValue(newText);
     this.elementHelper.checkValidation();
   }
 }
